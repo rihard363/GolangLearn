@@ -1,18 +1,26 @@
 package main
 
 import "fmt"
-
-func unionStringIndex() {
-	x:= "123"
-	y:= "abc"
-	var z string
-	for i,n:=range y {
-		z+=string(n)
-		m:=x[i]
-		z+=string(m)
+// if else fo len
+var x string = "123456"
+var y string = "abcdetqw"
+var z string
+func unionStringIndex(x,y,z string)(string) {
+	if len(x)>=len(y){
+		for i,n:=range y {
+			z+=string(n)
+			m:=x[i]
+			z+=string(m)
+		}
+	}else{
+		for i,n:=range x {
+			z+=string(n)
+			m:=y[i]
+			z+=string(m)
+		}
 	}
-	fmt.Println(z)
+	return(z)
 }
 func main() {
-	 unionStringIndex()
+	 fmt.Println(unionStringIndex(x,y,z))
 }

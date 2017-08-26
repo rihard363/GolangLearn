@@ -7,7 +7,7 @@ func presenceString() {
 	x:= "wertyuiopertyuiopqwerty"
 	y:= "qwerty"
 	var z string
-	z = strings.Replace(x, y, " ",-1)
+	z = strings.Replace(x, y, "",-1)
 	fmt.Println(z)
 }
 func main() {
