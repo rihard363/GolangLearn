@@ -1,9 +1,9 @@
 package main
 
 import "fmt"
-// if else fo len
 
-func unionStringIndex(x,y,z string)(string) {
+func unionStringIndex(x,y string)(string) {
+	var z string
 	if len(x)>=len(y){
 		for i,n:=range y {
 			z+=string(n)
@@ -22,6 +22,5 @@ func unionStringIndex(x,y,z string)(string) {
 func main() {
 	var x string = "123456"
 	var y string = "abcdetqw"
-	var z string
-	 fmt.Println(unionStringIndex(x,y,z))
+	 fmt.Println(unionStringIndex(x,y))
 }
