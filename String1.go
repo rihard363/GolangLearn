@@ -2,25 +2,29 @@ package main
 
 import "fmt"
 
-func unionStringIndex(x,y string)(string) {
-	var z string
-	if len(x)>=len(y){
-		for i,n:=range y {
-			z+=string(n)
-			m:=x[i]
-			z+=string(m)
-		}
-	}else{
-		for i,n:=range x {
-			z+=string(n)
-			m:=y[i]
-			z+=string(m)
-		}
+func unionStringByIndex(x, y string)(string) {
+	var a string
+	if len(x) >= len(y) {
+		a = calc(x, y)
+	}else {
+		a = calc(y, x)
 	}
-	return(z)
+	return(a)
+}
+func calc(long, short string)(string) {
+	var w string
+	for i, n := range long {
+      if i < len(short) {
+        m := short[i]
+        w += string(m)
+      }
+      w += string(n)
+	}
+	return(w)
 }
 func main() {
-	var x string = "123456"
+	var x string = "123456789"
 	var y string = "abcdetqw"
-	 fmt.Println(unionStringIndex(x,y))
+	 fmt.Println(unionStringByIndex(x, y))
 }
+// в задаче необходимо сложить строки посимвольно
