@@ -1,15 +1,14 @@
 package main
 
-import ("fmt"
-"strings")
-
-func presenceString() {
-	x:= "wertyuiopertyuiopqwerty"
-	y:= "qwerty"
-	var z string
-	z = strings.Replace(x, y, "",-1)
-	fmt.Println(z)
+import( 
+  "fmt"
+  "strings")
+func presenceString(x string)([]string) {
+	var sl1 []string
+	sl1 = strings.Split(x,"")//преобразование строки в слайс
+	return sl1
 }
 func main() {
-	 presenceString()
+  var x string = "12345asd678"
+	 fmt.Println(presenceString(x))
 }
