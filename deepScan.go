@@ -1,11 +1,21 @@
 package main
 
 import  "fmt"
-//удаление слов из текта
-func presenceString(text, cens string)(string){
+//удаление слов из текта(глубокая проверка)
+func findCens(text,cens string) (string){
+	var bann string
+	var lastNumberSymbolCens int = len(cens)
+	for i := 0 ; i < len(text) ; i ++{
+		if string(text[i]) == string(cens[0]) && string(text[i:i+lastNumberSymbolCens]) == cens{
+			bann = string(text[i : i + lastNumberSymbolCens])
+		}
+	}
+	return(bann)
+}
+func replace(text,cens string) (string) {
 	var amendedText string
 	var lastNumberSymbolCens int = len(cens) // номер последнего символа в строке цензуры
-	for i := 0 ; i < len(text) ; i++{ // цикл по text
+		for i := 0 ; i < len(text) ; i++{ // цикл по text
 		if string(text[i]) != string(cens[0]){ /*если и-тый символ текста не равен первому символу
 	цензуры то добавлять этот симлолы в исправленный текст*/
 			m1 := text[i] // создаем переменную m1 со значением i-го элемента text
@@ -21,12 +31,13 @@ func presenceString(text, cens string)(string){
 			m3 := text[i] //создаем переменную m3 со значением i-го элемента text
 			amendedText += string(m3) /* преобразуем переменную m3 в тип string и добавляем в
 	исправленный текст*/
+			}
 		}
-	}
 	return (amendedText)
 }
+func relis()
 func main() {
 	var text string = "12a345aasdsd678asd90"
 	var cens string = "asd"
-	fmt.Println(presenceString(text,cens))
+	fmt.Println(replace(text,cens))
 }
