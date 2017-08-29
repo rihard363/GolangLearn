@@ -1,7 +1,7 @@
 package main
 
 import  "fmt"
-//e
+//удаление слов из текта
 func presenceString(text, cens string)(string){
 	var amendedText string
 	var lastNumberSymbolCens int = len(cens) // номер последнего символа в строке цензуры
