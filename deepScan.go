@@ -2,11 +2,11 @@ package main
 
 import  "fmt"
 //удаление слов из текта(глубокая проверка)
-func findCens(text,cens string) (string){
+func findCens(text,cens string) (string){// поиск строки равной cens
 	var bann string
 	var lastNumberSymbolCens int = len(cens)
 	for i := 0 ; i < len(text) ; i ++{
-		if string(text[i]) == string(cens[0]) && string(text[i:i+lastNumberSymbolCens]) == cens{
+		if string(text[i]) == string(cens[0]) && string(text[i:i+lastNumberSymbolCens]) == cens{//если совпали первые символы и совпали строки то добавить в банн 
 			bann = string(text[i : i + lastNumberSymbolCens])
 		}
 	}
@@ -35,9 +35,18 @@ func replace(text,cens string) (string) {
 		}
 	return (amendedText)
 }
-func relis()
+func relis(text, cens string)(string){
+	var bann string = findCens(text,cens)// присвоить банн результат функции финдстринг
+	var amendedText string = replace(text,cens)// присвоить амендеттекст результат функции реплейс
+	for bann == cens {
+		text = amendedText
+		amendedText = replace(text,cens)
+		bann = findCens(text,cens)
+	}
+	return(text)
+}
 func main() {
-	var text string = "12a345aasdsd678asd90"
+	var text string = "12a345aaasdsdsd678asd90"
 	var cens string = "asd"
-	fmt.Println(replace(text,cens))
+	fmt.Println(relis(text,cens))
 }
