@@ -1,7 +1,7 @@
 package main
 
 import  "fmt"
-//удаление слов из текта(глубокая проверка)
+//замена слов
 func findCens(text,cens string) (int){// поиск строки равной cens
 	var bann int 
 	var lastNumberSymbolCens int = len(cens)
@@ -12,7 +12,7 @@ func findCens(text,cens string) (int){// поиск строки равной ce
 	}
 	return(bann)
 }
-func replace(text,cens string) (string) {
+func replace(text string,cens string,change string) (string) {
 	var amendedText string
 	var lastNumberSymbolCens int = len(cens) // номер последнего символа в строке цензуры
 		for i := 0 ; i < len(text) ; i++{ // цикл по text
@@ -28,19 +28,19 @@ func replace(text,cens string) (string) {
 	исправленный текст*/
 		} else { // иначе 
 			i = i + lastNumberSymbolCens // меняем значение i на значение индекса после пропущенной подстроки 
-			m3 := text[i] //создаем переменную m3 со значением i-го элемента text
-			amendedText += string(m3) /* преобразуем переменную m3 в тип string и добавляем в
+			m3 := change //создаем переменную m3 со значением i-го элемента text
+			amendedText += m3 /* преобразуем переменную m3 в тип string и добавляем в
 	исправленный текст*/
 			}
 		}
 	return (amendedText)
 }
-func relis(text, cens string)(string){
+func relis(text string, cens string,change string)(string){
 	var bann int = findCens(text,cens)// присвоить банн результат функции финдстринг
-	var amendedText string = replace(text,cens)// присвоить амендеттекст результат функции реплейс
+	var amendedText string = replace(text,cens,change)// присвоить амендеттекст результат функции реплейс
 	for bann == 1 {
 		text = amendedText
-		amendedText = replace(text,cens)
+		amendedText = replace(text,cens,change)
 		bann = findCens(text,cens)
 	}
 	return(text)
@@ -48,5 +48,6 @@ func relis(text, cens string)(string){
 func main() {
 	var text string = "12a345aaasdsdsd678asd90"
 	var cens string = "asd"
-	fmt.Println(relis(text,cens))
+	var change string = "rec"
+	fmt.Println(relis(text,cens,change))
 }
